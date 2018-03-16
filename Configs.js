@@ -69,7 +69,7 @@ var DEFAULT_CONFIG = {
 		fullDayEventDateFormat: "MMM Do",
 		ellipsis: 0,
 		limit:0,
-		oneLineEvent:0,
+		oneLineEvent:1,
 		replaceTitle: [],
 		classPattern: [],
 		classPatternWhere: ["title"],

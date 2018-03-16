@@ -26,9 +26,10 @@ RenderHelper.prototype.getSlotDom = function(mode, cfgView) {
 		showWeeks = cfg.showWeeks
 		var monthTitleWrapper = document.createElement("div")
 		monthTitleWrapper.className = "monthTitle month_" + moment().format("M")
-		monthTitleWrapper.innerHTML
-			= moment().startOf("month").format(cfg.monthTitleFormat)
-		wrapper.appendChild(monthTitleWrapper)
+		
+		monthTitleWrapper.innerHTML	= moment().startOf("month").format(cfg.monthTitleFormat)
+		// pas d'ajout du nom du mois pour gagner de la place
+		//wrapper.appendChild(monthTitleWrapper)
 
 		var calStart = moment().locale(locale).startOf("month").weekday(0).startOf("day")
 
@@ -389,9 +390,11 @@ RenderHelper.prototype.getEventDom = function(ev, cfg, matched) {
 
 	var eventContainerWrapper = document.createElement("div")
 	eventContainerWrapper.className = "eventContainer"
-	var eventTimeWrapper = document.createElement("div")
+	//var eventTimeWrapper = document.createElement("div")
+	var eventTimeWrapper = document.createElement("span")
 	eventTimeWrapper.className = "eventTime"
-	var eventContentWrapper = document.createElement("div")
+	//var eventContentWrapper = document.createElement("div")
+	var eventContentWrapper = document.createElement("span")
 	eventContentWrapper.className = "eventContent"
 
 
@@ -463,7 +466,8 @@ RenderHelper.prototype.getEventDom = function(ev, cfg, matched) {
 		}
 	})
 
-	eventWrapper.appendChild(symbolWrapper)
+	//desactivation de l'icone car prend trop de place
+	//eventWrapper.appendChild(symbolWrapper)
 	eventWrapper.appendChild(eventContainerWrapper)
 
 	return eventWrapper
@@ -517,9 +521,11 @@ RenderHelper.prototype.eventPeriodString = function(cfg, ev) {
 			+ ((isSameDay) ? "" : ed.format(dateFormat)) + " "
 			+ ed.format(timeFormat)
 		end = (isSameTime) ? "" : end
-		text = start + end
+		//text = start + end
+		text = start + ' : '
 	}
 	return text
+	//return start
 }
 
 RenderHelper.prototype.getRegionContainer = function(regionName) {
